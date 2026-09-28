@@ -1,0 +1,48 @@
+Project idea: {{IDEA}}
+
+Generate complete UML diagrams for this software system. Return Markdown with the following sections:
+
+## Overview
+Brief overview of the system and actors.
+
+## Use Case Diagram
+Provide a Mermaid use case diagram.
+
+```mermaid
+useCaseDiagram
+```
+
+## Class Diagram
+Provide a PlantUML class diagram.
+
+```plantuml
+@startuml
+class User {
+  +id: int
+  +email: string
+}
+@enduml
+```
+
+## Sequence Diagram
+Provide a Mermaid sequence diagram.
+
+```mermaid
+sequenceDiagram
+```
+
+## Activity Diagram
+Provide a Mermaid flowchart or activity diagram.
+
+```mermaid
+flowchart TD
+```
+
+## Component Diagram
+Provide a Mermaid C4/component-style diagram.
+
+```mermaid
+flowchart LR
+```
+
+Include a short explanation before each diagram. Where applicable, also show the Mermaid equivalent of PlantUML code in additional fenced blocks.

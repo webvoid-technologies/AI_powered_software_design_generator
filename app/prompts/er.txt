@@ -1,0 +1,28 @@
+Project idea: {{IDEA}}
+
+Generate a complete Entity Relationship Diagram for the database. Return Markdown with the following sections:
+
+## Overview
+Brief explanation of the data model.
+
+## Entities and Attributes
+List entities with attributes, primary keys (PK), and foreign keys (FK).
+
+## Mermaid ER Diagram
+Provide a valid Mermaid ER diagram.
+
+```mermaid
+erDiagram
+    USER ||--o{ ORDER : places
+    USER {
+        int id PK
+        string email
+    }
+    ORDER {
+        int id PK
+        int user_id FK
+    }
+```
+
+## Relationships
+Describe relationships (one-to-one, one-to-many, many-to-many) in plain text.

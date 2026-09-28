@@ -1,0 +1,35 @@
+Project idea: {{IDEA}}
+
+Generate a structured software project mind map. Return Markdown with the following sections:
+
+## Overview
+A concise 2-paragraph overview of the project, target users, and main value proposition.
+
+## Mind Map Explanation
+List the central idea, functional modules, user roles, technologies, and key features as bullet points.
+
+## Mermaid Mind Map
+Provide valid Mermaid mindmap code inside a single fenced code block labeled `mermaid`. Example:
+
+```mermaid
+mindmap
+  root((Project Name))
+    Module A
+      Feature A1
+      Feature A2
+    Module B
+      Feature B1
+    User Roles
+      Admin
+      Customer
+    Technologies
+      Frontend
+      Backend
+      Database
+```
+
+CRITICAL Mermaid mindmap rules:
+- Node text must contain only letters, numbers, spaces, and hyphens.
+- Do NOT use parentheses, slashes, dots, colons, or quotes inside node text. Write "NodeJS" not "Node.js", "NestJS or Spring Boot" not "NestJS / Spring Boot".
+- Use the root((...)) shape only for the root node; all other nodes are plain indented text.
+- Ensure the Mermaid diagram renders correctly and contains no syntax errors.

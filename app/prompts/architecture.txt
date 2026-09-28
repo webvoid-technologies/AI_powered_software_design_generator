@@ -1,0 +1,49 @@
+Project idea: {{IDEA}}
+
+Generate software architecture documentation. Return Markdown with the following sections:
+
+## Overview
+Brief architecture summary and rationale.
+
+## Layered Architecture
+Describe presentation, business logic, data access, and infrastructure layers.
+
+## MVC Architecture
+Identify Model, View, and Controller components for this project.
+
+## Microservice Suggestion
+Recommend whether a monolith or microservices approach fits best and justify.
+
+## Folder Structure
+Provide a recommended project folder tree.
+
+```text
+project/
+  src/
+    controllers/
+    models/
+    services/
+    routes/
+```
+
+## Component Interaction
+Explain how components communicate.
+
+## Deployment Architecture
+Provide a Mermaid diagram showing CI/CD, container orchestration, and cloud services.
+
+```mermaid
+flowchart LR
+    A[Developer] --> B[GitHub]
+    B --> C[CI/CD]
+    C --> D[Docker Registry]
+    D --> E[Kubernetes]
+    E --> F[Cloud Load Balancer]
+```
+
+## Mermaid Architecture Diagram
+Provide an additional Mermaid diagram of the chosen architectural pattern.
+
+```mermaid
+flowchart TD
+```

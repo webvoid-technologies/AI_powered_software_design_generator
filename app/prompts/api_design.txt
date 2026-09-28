@@ -1,0 +1,41 @@
+Project idea: {{IDEA}}
+
+Generate REST API design documentation. Return Markdown with the following sections:
+
+## Overview
+Brief description of the API style (REST), base URL, and versioning.
+
+## Authentication
+Recommended authentication mechanism.
+
+## API Endpoints Table
+Provide a Markdown table with endpoint name, method, path, and short description.
+
+| Endpoint | Method | Path | Description |
+
+## Request and Response Examples
+For at least 5 endpoints provide JSON request and response examples.
+
+```json
+{
+  "method": "POST",
+  "path": "/api/v1/users",
+  "request": { "name": "string", "email": "string" },
+  "response": { "id": 1, "name": "string", "email": "string" },
+  "status": 201,
+  "validation": ["email required", "name 2-50 chars"]
+}
+```
+
+## Status Codes and Validation Rules
+List common HTTP status codes and validation rules.
+
+## OpenAPI JSON
+Provide a compact OpenAPI/Swagger JSON example.
+
+```json
+{
+  "openapi": "3.0.0",
+  "info": { "title": "API", "version": "1.0.0" }
+}
+```

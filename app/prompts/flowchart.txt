@@ -1,0 +1,36 @@
+Project idea: {{IDEA}}
+
+Generate comprehensive workflow flowcharts. Return Markdown with the following sections:
+
+## Overview
+Brief description of the workflows covered.
+
+## User Flow
+Provide a Mermaid flowchart showing the end-user journey.
+
+```mermaid
+flowchart TD
+```
+
+## Admin Flow
+Provide a Mermaid flowchart showing admin operations.
+
+```mermaid
+flowchart TD
+```
+
+## Business Process Flow
+Provide a Mermaid flowchart showing the core business process.
+
+```mermaid
+flowchart TD
+```
+
+## Error Handling Flow
+Provide a Mermaid flowchart showing error handling and recovery paths.
+
+```mermaid
+flowchart TD
+```
+
+Use distinct node IDs for each flowchart and keep diagrams syntactically valid.

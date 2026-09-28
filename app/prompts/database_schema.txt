@@ -1,0 +1,26 @@
+Project idea: {{IDEA}}
+
+Generate a complete SQL database schema. Return Markdown with the following sections:
+
+## Overview
+Brief explanation of the database design goals and normalization.
+
+## Tables Summary
+List tables, their purpose, and key columns.
+
+## SQL Schema
+Provide SQL CREATE TABLE statements for all entities. Include primary keys, foreign keys, constraints, indexes, and relationships.
+
+```sql
+CREATE TABLE users (
+    id SERIAL PRIMARY KEY,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+```
+
+## Entity Relationships
+Describe the relationships between tables.
+
+## Indexes and Constraints
+List recommended indexes and constraints for performance and integrity.

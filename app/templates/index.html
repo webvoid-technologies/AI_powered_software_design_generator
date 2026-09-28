@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Software Design & Diagram Generator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-sql.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-json.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="bg-gradient-to-br from-blue-50 via-white to-blue-100 text-slate-800 min-h-screen">
+    <div class="flex flex-col lg:flex-row min-h-screen">
+        <!-- Sidebar -->
+        <aside class="w-full lg:w-72 bg-white/70 backdrop-blur-xl border-r border-white/50 shadow-lg flex flex-col z-20">
+            <div class="p-6 border-b border-slate-200/50">
+                <h1 class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-700 to-blue-500">AI DesignGen</h1>
+                <p class="text-xs text-slate-500 mt-1">Software Design & Diagram POC</p>
+            </div>
+            <nav class="flex-1 overflow-y-auto p-4 space-y-2" id="module-nav">
+                <button data-module="mindmap" class="module-btn w-full text-left px-4 py-3 rounded-xl bg-blue-600 text-white shadow-md transition hover:scale-[1.02]">
+                    1. AI Mind Map
+                </button>
+                <button data-module="uml" class="module-btn w-full text-left px-4 py-3 rounded-xl bg-white/80 text-slate-700 hover:bg-blue-50 transition hover:scale-[1.02]">
+                    2. AI UML Diagrams
+                </button>
+                <button data-module="flowchart" class="module-btn w-full text-left px-4 py-3 rounded-xl bg-white/80 text-slate-700 hover:bg-blue-50 transition hover:scale-[1.02]">
+                    3. AI Flowchart
+                </button>
+                <button data-module="er" class="module-btn w-full text-left px-4 py-3 rounded-xl bg-white/80 text-slate-700 hover:bg-blue-50 transition hover:scale-[1.02]">
+                    4. AI ER Diagram
+                </button>
+                <button data-module="system-design" class="module-btn w-full text-left px-4 py-3 rounded-xl bg-white/80 text-slate-700 hover:bg-blue-50 transition hover:scale-[1.02]">
+                    5. AI System Design
+                </button>
+                <button data-module="architecture" class="module-btn w-full text-left px-4 py-3 rounded-xl bg-white/80 text-slate-700 hover:bg-blue-50 transition hover:scale-[1.02]">
+                    6. AI Architecture
+                </button>
+                <button data-module="api-design" class="module-btn w-full text-left px-4 py-3 rounded-xl bg-white/80 text-slate-700 hover:bg-blue-50 transition hover:scale-[1.02]">
+                    7. AI API Design
+                </button>
+                <button data-module="database-schema" class="module-btn w-full text-left px-4 py-3 rounded-xl bg-white/80 text-slate-700 hover:bg-blue-50 transition hover:scale-[1.02]">
+                    8. AI Database Schema
+                </button>
+            </nav>
+            <div class="p-4 border-t border-slate-200/50 text-xs text-slate-400 text-center">
+                Powered by Groq AI
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 p-4 lg:p-8 overflow-y-auto">
+            <div class="max-w-6xl mx-auto space-y-6">
+                <!-- Header Card -->
+                <div class="glass-card p-6 rounded-2xl">
+                    <h2 class="text-xl font-semibold text-slate-800 mb-2">Project Description</h2>
+                    <textarea id="idea-input" rows="3" placeholder="Describe your software idea, e.g. Build an Online Food Delivery System"
+                        class="w-full p-4 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white/80 resize-none"></textarea>
+
+                    <div class="flex flex-col sm:flex-row gap-3 mt-4 items-start sm:items-center">
+                        <select id="module-select" class="px-4 py-2 rounded-lg border border-slate-200 bg-white/80 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <option value="mindmap">AI Mind Map</option>
+                            <option value="uml">AI UML Diagrams</option>
+                            <option value="flowchart">AI Flowchart</option>
+                            <option value="er">AI ER Diagram</option>
+                            <option value="system-design">AI System Design</option>
+                            <option value="architecture">AI Architecture</option>
+                            <option value="api-design">AI API Design</option>
+                            <option value="database-schema">AI Database Schema</option>
+                        </select>
+                        <button id="generate-btn" class="px-6 py-2 rounded-lg bg-gradient-to-r from-blue-600 to-blue-500 text-white font-medium shadow-lg hover:shadow-xl transition hover:scale-105">
+                            Generate
+                        </button>
+                        <button id="clear-btn" class="px-6 py-2 rounded-lg bg-slate-100 text-slate-600 hover:bg-slate-200 transition">
+                            Clear
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Loading -->
+                <div id="loading" class="hidden glass-card p-8 rounded-2xl text-center">
+                    <div class="inline-block w-12 h-12 border-4 border-blue-200 border-t-blue-600 rounded-full animate-spin mb-4"></div>
+                    <p class="text-slate-600">Generating software design artifacts with AI...</p>
+                </div>
+
+                <!-- Error -->
+                <div id="error-box" class="hidden glass-card p-4 rounded-2xl border-l-4 border-red-500 bg-red-50/80 text-red-700"></div>
+
+                <!-- Output Section -->
+                <div id="output-section" class="hidden space-y-6">
+                    <!-- Overview -->
+                    <div class="glass-card p-6 rounded-2xl">
+                        <h3 class="text-lg font-semibold text-slate-800 mb-3">Overview</h3>
+                        <div id="overview-content" class="prose prose-slate max-w-none text-slate-700 leading-relaxed"></div>
+                    </div>
+
+                    <!-- Schema Visualization -->
+                    <div id="schema-card" class="glass-card p-6 rounded-2xl hidden">
+                        <div class="flex items-center justify-between mb-3">
+                            <h3 class="text-lg font-semibold text-slate-800">Database Schema</h3>
+                            <span id="schema-count" class="text-xs px-2 py-1 rounded-full bg-blue-100 text-blue-700 font-medium"></span>
+                        </div>
+                        <div id="schema-grid" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4"></div>
+                        <div id="schema-relations" class="mt-4 hidden">
+                            <h4 class="text-sm font-semibold text-slate-600 mb-2">Relationships</h4>
+                            <div id="schema-relations-list" class="flex flex-wrap gap-2"></div>
+                        </div>
+                    </div>
+
+                    <!-- Diagram Preview -->
+                    <div id="diagram-card" class="glass-card p-6 rounded-2xl hidden">
+                        <h3 class="text-lg font-semibold text-slate-800 mb-3">Diagram Preview</h3>
+                        <div class="mermaid-preview overflow-x-auto bg-white/60 rounded-xl p-4 border border-slate-200/50" id="mermaid-preview"></div>
+                    </div>
+
+                    <!-- Code Tabs -->
+                    <div class="glass-card p-6 rounded-2xl">
+                        <div class="flex flex-wrap gap-2 mb-4 border-b border-slate-200/50 pb-2" id="code-tabs"></div>
+                        <div id="code-panels" class="space-y-4"></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Toast -->
+    <div id="toast" class="fixed bottom-6 right-6 px-6 py-3 rounded-xl bg-slate-800 text-white shadow-2xl transform translate-y-24 transition-transform duration-300 z-50">
+        Notification
+    </div>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+Project idea: {{IDEA}}
+
+Generate a high-level system design. Return Markdown with the following sections:
+
+## Overview
+Description of the system purpose, scale assumptions, and primary components.
+
+## Client-Server Architecture
+Explain the client, server, and data layers.
+
+## Request Flow
+Describe a typical request lifecycle from user action to database response.
+
+## Service Interactions
+List major services and how they communicate.
+
+## Technology Recommendations
+Recommend frontend, backend, database, caching, queue, and deployment technologies.
+
+## Mermaid Architecture Diagram
+Provide a valid Mermaid diagram showing clients, load balancers, API gateways, services, database, cache, and external integrations.
+
+```mermaid
+flowchart LR
+    A[Client] --> B[Load Balancer]
+    B --> C[API Gateway]
+    C --> D[Service A]
+    C --> E[Service B]
+    D --> F[(Database)]
+```
