@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="https://www.webvoidtechnologies.com/webvoid_logo_tm.png" alt="Webvoid Technologies" width="220">
+</p>
+
 # AI-Powered Software Design and Diagram Generator
 
 A complete Flask-based Proof of Concept (POC) for a final-year CSE project that accepts a software project idea in natural language and automatically generates complete software engineering artifacts including mind maps, UML diagrams, flowcharts, ER diagrams, system architecture, API design, and database schema.
@@ -143,3 +147,18 @@ All endpoints accept JSON input: `{ "idea": "Your project idea" }`.
 - No database, authentication, or Docker is used in this POC.
 - All AI-generated content is produced via the Groq API.
 - Ensure your Groq API key is valid and has sufficient quota.
+
+
+
+## Support
+
+For questions or issues, contact:
+
+**Email:** [studentprogram@webvoidtechnologies.com](mailto:studentprogram@webvoidtechnologies.com)
+
+---
+
+<p align="center">
+  <sub>Developed by <b>Webvoid Technologies</b></sub>
+</p>
+
